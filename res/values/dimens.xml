@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+	
+    
+    <dimen name="ss_seat_thum_size_h">90.0dip</dimen>
+    <dimen name="ss_seat_thum_size_w">120.0dip</dimen>
+    
+    <dimen name="seat_max_height">60dip</dimen>
+    <dimen name="seat_min_height">30dip</dimen>
+    <dimen name="seat_max_width">60dip</dimen>
+    <dimen name="seat_min_width">30dip</dimen>
+    <dimen name="seat_init_width">50dip</dimen>
+    <dimen name="seat_init_height">50dip</dimen>
+    
+    <dimen name="ss_between_offset">5.0dip</dimen>
+    <dimen name="ss_seat_check_size">30.0dip</dimen>
+</resources>

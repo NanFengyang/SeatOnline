@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <RelativeLayout
+        android:id="@+id/rl_thum"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@android:color/darker_gray" >
+
+        <com.ldm.seatchoosetest.view.SSThumView
+            android:id="@+id/ss_ssthumview"
+            android:layout_width="@dimen/ss_seat_thum_size_w"
+            android:layout_height="@dimen/ss_seat_thum_size_h"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="5.0dip"
+            android:layout_marginLeft="5.0dip"
+            android:layout_marginTop="5.0dip" />
+    </RelativeLayout>
+
+    <com.ldm.seatchoosetest.view.SatView
+        android:id="@+id/mSSView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_thum"
+        android:layout_margin="10dp" />
+
+</RelativeLayout>
