@@ -2,19 +2,19 @@ package com.ldm.seatchoosetest.model;
 
 public class SeatStatus {
 	/**
-	 * 座位状态，走道
+	 * 搴т綅鐘舵?侊紝璧伴亾
 	 */
-	public static int CHOOSE_NO = -1;
+	public final static int CHOOSE_NO = 3;
 	/**
-	 * 座位状态，已经选择
+	 * 搴т綅鐘舵?侊紝宸茬粡閫夋嫨
 	 */
-	public static int CHOOSE_OK = 1;
+	public final static int CHOOSE_OK = 4;
 	/**
-	 * 座位状态，未选
+	 * 搴т綅鐘舵?侊紝鏈??
 	 */
-	public static int CHOOSE_UN = 0;
+	public final static int CHOOSE_UN = 1;
 	/**
-	 * 座位状态，不可选
+	 * 搴т綅鐘舵?侊紝涓嶅彲閫?
 	 */
-	public static int CHOOSE_NeVeryOK = 2;
+	public final static int CHOOSE_NeVeryOK = 2;
 }

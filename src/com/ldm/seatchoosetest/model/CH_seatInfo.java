@@ -1,11 +1,20 @@
 package com.ldm.seatchoosetest.model;
 
 public class CH_seatInfo {
-	private String id;// 座位ID
-	private Integer position;// 行数
-	private Integer raw;// 行数
-	private Integer column;// 列数
-	private Integer status;// 座位状态
+	private String id;// 搴т綅ID
+	private Integer position;// 琛屾暟
+	private Integer raw;// 琛屾暟
+	private Integer column;// 鍒楁暟
+	private Integer status;// 搴т綅鐘舵??
+	private Integer Show_column;// 搴т綅琛屾暟鏄剧ず
+
+	public Integer getShow_column() {
+		return Show_column;
+	}
+
+	public void setShow_column(Integer show_column) {
+		Show_column = show_column;
+	}
 
 	public String getId() {
 		return id;

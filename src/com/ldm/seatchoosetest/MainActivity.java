@@ -10,14 +10,15 @@ import android.view.Menu;
 import android.widget.Toast;
 
 import com.ldm.seatchoosetest.model.CH_seatInfo;
+import com.ldm.seatchoosetest.model.SeatStatus;
 import com.ldm.seatchoosetest.view.SSThumView;
-import com.ldm.seatchoosetest.view.SatView;
+import com.ldm.seatchoosetest.view.SeatView;
 
 @SuppressLint("ShowToast")
 public class MainActivity extends Activity {
 	private static final int ROW = 6;
 	private static final int column = 6;
-	private SatView mSSView;
+	private SeatView mSSView;
 	private SSThumView mSSThumView;
 	private List<CH_seatInfo> list_CH_seatInfo = new ArrayList<CH_seatInfo>();
 
@@ -29,26 +30,26 @@ public class MainActivity extends Activity {
 	}
 
 	private void init() {
-		mSSView = (SatView) this.findViewById(R.id.mSSView);
+		mSSView = (SeatView) this.findViewById(R.id.mSSView);
 		mSSThumView = (SSThumView) this.findViewById(R.id.ss_ssthumview);
 		SeatiInforData();
-		mSSView.init(list_CH_seatInfo, mSSThumView);
+		mSSView.init(list_CH_seatInfo, mSSThumView, 10);
 		mSSView.setOnSeatClickListener(new OnNewSeatClickListener() {
 
 			@Override
-			public boolean unClick(int position, int Column, int Raw, int status) {
+			public boolean unClick(CH_seatInfo seatInfo) {
 				// TODO Auto-generated method stub
 				Toast.makeText(MainActivity.this,
-						"你取消了第" + position + "个座位，" + Raw + "排" + Column + "座，状态：" + status,
+						"閫変腑" + seatInfo.getColumn() + "-" + seatInfo.getRaw(),
 						Toast.LENGTH_SHORT).show();
 				return false;
 			}
 
 			@Override
-			public boolean onClick(int position, int Column, int Raw, int status) {
+			public boolean onClick(CH_seatInfo seatInfo) {
 				// TODO Auto-generated method stub
 				Toast.makeText(MainActivity.this,
-						"你点击了第" + position + "个座位，" + Raw + "排" + Column + "座，状态：" + status,
+						"閫変腑" + seatInfo.getColumn() + "-" + seatInfo.getRaw(),
 						Toast.LENGTH_SHORT).show();
 				return false;
 			}
@@ -63,7 +64,7 @@ public class MainActivity extends Activity {
 				cs.setPosition(index);
 				cs.setRaw(i);
 				cs.setColumn(j);
-				cs.setStatus(0);
+				cs.setStatus(SeatStatus.CHOOSE_UN);
 				list_CH_seatInfo.add(cs);
 				index += 1;
 			}

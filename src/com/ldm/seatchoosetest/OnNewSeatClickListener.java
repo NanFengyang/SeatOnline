@@ -1,8 +1,10 @@
 package com.ldm.seatchoosetest;
 
+import com.ldm.seatchoosetest.model.CH_seatInfo;
+
 public abstract interface OnNewSeatClickListener {
 	/**
-	 * 取消选择
+	 * 鍙栨秷閫夋嫨
 	 * 
 	 * @param position
 	 * @param Column
@@ -10,10 +12,10 @@ public abstract interface OnNewSeatClickListener {
 	 * @param status
 	 * @return
 	 */
-	public abstract boolean unClick(int position, int Column, int Raw, int status);
+	public abstract boolean unClick(CH_seatInfo seatInfo);
 
 	/**
-	 * 点击选择
+	 * 鐐瑰嚮閫夋嫨
 	 * 
 	 * @param position
 	 * @param Column
@@ -21,5 +23,5 @@ public abstract interface OnNewSeatClickListener {
 	 * @param status
 	 * @return
 	 */
-	public abstract boolean onClick(int position, int Column, int Raw, int status);
+	public abstract boolean onClick(CH_seatInfo seatInfo);
 }

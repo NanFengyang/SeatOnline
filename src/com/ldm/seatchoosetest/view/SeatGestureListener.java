@@ -8,9 +8,9 @@ import com.ldm.seatchoosetest.model.CH_seatInfo;
 import com.ldm.seatchoosetest.model.SeatStatus;
 
 class SeatGestureListener extends GestureDetector.SimpleOnGestureListener {
-	private SatView mSatView;
+	private SeatView mSatView;
 
-	SeatGestureListener(SatView paramSatView) {
+	SeatGestureListener(SeatView paramSatView) {
 		mSatView = paramSatView;
 	}
 
@@ -26,79 +26,88 @@ class SeatGestureListener extends GestureDetector.SimpleOnGestureListener {
 		return false;
 	}
 
-	public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2,
-			float paramFloat1, float paramFloat2) {
+	public boolean onFling(MotionEvent paramMotionEvent1,
+			MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2) {
 		return false;
 	}
 
 	public void onLongPress(MotionEvent paramMotionEvent) {
 	}
 
-	public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2,
-			float x_scroll_distance, float y_scroll_distance) {
-		// ÊÇ·ñ¿ÉÒÔÒÆ¶¯ºÍµã»÷
-		if (!SatView.a(mSatView)) {
+	public boolean onScroll(MotionEvent paramMotionEvent1,
+			MotionEvent paramMotionEvent2, float x_scroll_distance,
+			float y_scroll_distance) {
+		// æ˜¯å¦å¯ä»¥ç§»åŠ¨å’Œç‚¹ï¿½?
+		if (!SeatView.a(mSatView)) {
 			return false;
 		}
-		// ÏÔÊ¾ËõÂÔÍ¼
-		SatView.a(mSatView, true);
 		boolean bool1 = true;
 		boolean bool2 = true;
-
-		if ((SatView.seatViewWidth(mSatView) < mSatView.getMeasuredWidth())
-				&& (0.0F == SatView.seatView_X(mSatView))) {
+		if ((SeatView.seatViewWidth(mSatView) < mSatView.getMeasuredWidth())
+				&& (0.0F == SeatView.seatView_X(mSatView))) {
 			bool1 = false;
 		}
 
-		if ((SatView.seatViewHeight(mSatView) < mSatView.getMeasuredHeight())
-				&& (0.0F == SatView.seatView_Y(mSatView))) {
+		if ((SeatView.seatViewHeight(mSatView) < mSatView.getMeasuredHeight())
+				&& (0.0F == SeatView.seatView_Y(mSatView))) {
 			bool2 = false;
 		}
 
+		if (bool1 | bool2) {
+			// æ˜¾ç¤ºç¼©ç•¥ï¿½?
+			SeatView.a(mSatView, true);
+		}
 		if (bool1) {
+
 			int k = Math.round(x_scroll_distance);
 			Log.i("TAG_rect", k + "=k");
-			// ĞŞ¸ÄÅÅÊıxÖáµÄÆ«ÒÆÁ¿
-			SatView.c(mSatView, (float) k);
+			// ä¿®æ”¹æ’æ•°xè½´çš„åç§»ï¿½?
+			SeatView.c(mSatView, (float) k);
 			// Log.i("TAG", SatView.v(mSatView)+"");
-			// ĞŞ¸Ä×ùÎ»¾àÀëÅÅÊıµÄºáÏò¾àÀë
-			SatView.k(mSatView, k);
+			// ä¿®æ”¹åº§ä½è·ç¦»æ’æ•°çš„æ¨ªå‘è·ï¿½?
+			SeatView.k(mSatView, k);
 			// Log.i("TAG", SatView.r(mSatView)+"");
-			if (SatView.getSeatViewRawDistance(mSatView) < 0) {
-				// »¬µ½×î×ó
-				SatView.i(mSatView, 0);
-				SatView.a(mSatView, 0.0F);
+			if (SeatView.getSeatViewRawDistance(mSatView) < 0) {
+				// æ»‘åˆ°ï¿½?ï¿½?
+				SeatView.i(mSatView, 0);
+				SeatView.a(mSatView, 0.0F);
 			}
 
-			if (SatView.getSeatViewRawDistance(mSatView) + mSatView.getMeasuredWidth() > SatView
-					.seatViewWidth(mSatView)) {
-				// »¬µ½×îÓÒ
-				SatView.i(mSatView, SatView.seatViewWidth(mSatView) - mSatView.getMeasuredWidth());
-				SatView.a(mSatView,
-						(float) (mSatView.getMeasuredWidth() - SatView.seatViewWidth(mSatView)));
+			if (SeatView.getSeatViewRawDistance(mSatView)
+					+ mSatView.getMeasuredWidth() > SeatView
+						.seatViewWidth(mSatView)) {
+				// æ»‘åˆ°ï¿½?ï¿½?
+				SeatView.i(mSatView, SeatView.seatViewWidth(mSatView)
+						- mSatView.getMeasuredWidth());
+				SeatView.a(mSatView,
+						(float) (mSatView.getMeasuredWidth() - SeatView
+								.seatViewWidth(mSatView)));
 			}
 		}
 
 		if (bool2) {
-			// ÉÏ¸ºÏÂÕı- ÍùÏÂ»¬Ôò¼õ
+
+			// ä¸Šè´Ÿä¸‹æ­£- ï¿½?ä¸‹æ»‘åˆ™å‡
 			int j = Math.round(y_scroll_distance);
-			// ĞŞ¸ÄÅÅÊıyÖáµÄÆ«ÒÆÁ¿
-			SatView.d(mSatView, (float) j);
-			// ĞŞ¸Ä¿ÉÊÓ×ùÎ»¾àÀë¶¥¶ËµÄ¾àÀë
-			SatView.l(mSatView, j);
-			Log.i("TAG", SatView.t(mSatView) + "");
-			if (SatView.t(mSatView) < 0) {
-				// »¬µ½¶¥
-				SatView.j(mSatView, 0);
-				SatView.b(mSatView, 0.0F);
+			// ä¿®æ”¹æ’æ•°yè½´çš„åç§»ï¿½?
+			SeatView.d(mSatView, (float) j);
+			// ä¿®æ”¹å¯è§†åº§ä½è·ç¦»é¡¶ç«¯çš„è·ï¿½?
+			SeatView.l(mSatView, j);
+			Log.i("TAG", SeatView.t(mSatView) + "");
+			if (SeatView.t(mSatView) < 0) {
+				// æ»‘åˆ°ï¿½?
+				SeatView.j(mSatView, 0);
+				SeatView.b(mSatView, 0.0F);
 			}
 
-			if (SatView.t(mSatView) + mSatView.getMeasuredHeight() > SatView
+			if (SeatView.t(mSatView) + mSatView.getMeasuredHeight() > SeatView
 					.seatViewHeight(mSatView)) {
-				// »¬µ½µ×
-				SatView.j(mSatView, SatView.seatViewHeight(mSatView) - mSatView.getMeasuredHeight());
-				SatView.b(mSatView,
-						(float) (mSatView.getMeasuredHeight() - SatView.seatViewHeight(mSatView)));
+				// æ»‘åˆ°ï¿½?
+				SeatView.j(mSatView, SeatView.seatViewHeight(mSatView)
+						- mSatView.getMeasuredHeight());
+				SeatView.b(mSatView,
+						(float) (mSatView.getMeasuredHeight() - SeatView
+								.seatViewHeight(mSatView)));
 			}
 		}
 
@@ -116,27 +125,27 @@ class SeatGestureListener extends GestureDetector.SimpleOnGestureListener {
 	}
 
 	public boolean onSingleTapUp(MotionEvent paramMotionEvent) {
-		// ÁĞÊı
-		int i = SatView.a(mSatView, (int) paramMotionEvent.getX());
-		// ÅÅÊı
-		int j = SatView.b(mSatView, (int) paramMotionEvent.getY());
-		for (int i1 = 0; i1 < SatView.list_SeatInfo(mSatView).size(); i1++) {
-			CH_seatInfo ch_s = SatView.list_SeatInfo(mSatView).get(i1);
+
+		// åˆ—æ•°
+		int i = SeatView.a(mSatView, (int) paramMotionEvent.getX());
+		// æ’æ•°
+		int j = SeatView.b(mSatView, (int) paramMotionEvent.getY());
+		for (int i1 = 0; i1 < SeatView.list_SeatInfo(mSatView).size(); i1++) {
+			CH_seatInfo ch_s = SeatView.list_SeatInfo(mSatView).get(i1);
 			if (ch_s.getColumn() == i && ch_s.getRaw() == j) {
 				switch (ch_s.getStatus()) {
-				case 1:// ÒÑÑ¡ÖĞ
+				case SeatStatus.CHOOSE_OK:// å·²ï¿½?ï¿½ä¸­
 					ch_s.setStatus(SeatStatus.CHOOSE_UN);
-					SatView.list_SeatInfo(mSatView).set(i1, ch_s);
-					if (SatView.d(mSatView) != null) {
-						SatView.d(mSatView).onClick(i1, i + 1, j + 1, ch_s.getStatus());
+					SeatView.list_SeatInfo(mSatView).set(i1, ch_s);
+					if (SeatView.d(mSatView) != null) {
+						SeatView.d(mSatView).unClick(ch_s);
 					}
-
 					break;
-				case 0:// ¿ÉÑ¡
+				case SeatStatus.CHOOSE_UN:// æœªï¿½?ï¿½ä¸­
 					ch_s.setStatus(SeatStatus.CHOOSE_OK);
-					SatView.list_SeatInfo(mSatView).set(i1, ch_s);
-					if (SatView.d(mSatView) != null) {
-						SatView.d(mSatView).unClick(i1, i + 1, j + 1, ch_s.getStatus());
+					SeatView.list_SeatInfo(mSatView).set(i1, ch_s);
+					if (SeatView.d(mSatView) != null) {
+						SeatView.d(mSatView).onClick(ch_s);
 					}
 					break;
 				default:
@@ -146,8 +155,8 @@ class SeatGestureListener extends GestureDetector.SimpleOnGestureListener {
 
 		}
 
-		// ÏÔÊ¾ËõÂÔÍ¼
-		SatView.a(mSatView, true);
+		// æ˜¾ç¤ºç¼©ç•¥ï¿½?
+		SeatView.a(mSatView, true);
 		mSatView.invalidate();
 		return false;
 	}

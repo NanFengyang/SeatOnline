@@ -20,7 +20,7 @@
             android:layout_marginTop="5.0dip" />
     </RelativeLayout>
 
-    <com.ldm.seatchoosetest.view.SatView
+    <com.ldm.seatchoosetest.view.SeatView
         android:id="@+id/mSSView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
