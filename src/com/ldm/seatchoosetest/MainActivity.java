@@ -39,8 +39,9 @@ public class MainActivity extends Activity {
 			@Override
 			public boolean unClick(CH_seatInfo seatInfo) {
 				// TODO Auto-generated method stub
-				Toast.makeText(MainActivity.this,
-						"选中" + seatInfo.getColumn() + "-" + seatInfo.getRaw(),
+				int raw = seatInfo.getRaw() + 1;
+				int Column = seatInfo.getColumn() + 1;
+				Toast.makeText(MainActivity.this, "取消" + raw + "排-" + Column,
 						Toast.LENGTH_SHORT).show();
 				return false;
 			}
@@ -48,8 +49,9 @@ public class MainActivity extends Activity {
 			@Override
 			public boolean onClick(CH_seatInfo seatInfo) {
 				// TODO Auto-generated method stub
-				Toast.makeText(MainActivity.this,
-						"选中" + seatInfo.getColumn() + "-" + seatInfo.getRaw(),
+				int raw = seatInfo.getRaw() + 1;
+				int Column = seatInfo.getColumn() + 1;
+				Toast.makeText(MainActivity.this, "选中" + raw + "排-" + Column,
 						Toast.LENGTH_SHORT).show();
 				return false;
 			}
