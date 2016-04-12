@@ -79,7 +79,7 @@ public class SeatView extends View {
 	/** 右边�? */
 	private int right_padding = 0;
 	/** 上边�? */
-	private int top_padding = 0;
+	private int top_padding = 50;
 	/** 下边�? */
 	private int bom_padding = 0;
 	/** 排数x轴偏移量 */
@@ -100,7 +100,7 @@ public class SeatView extends View {
 	private boolean first_load_bg = true;
 	private int tempX;
 	private int tempY;
-
+	private String centerText = "中央舞台";
 	GestureDetector mGestureDetector = new GestureDetector(mContext,
 			new SeatGestureListener(this));
 
@@ -119,6 +119,14 @@ public class SeatView extends View {
 
 	public SeatView(Context paramContext, AttributeSet paramAttributeSet) {
 		this(paramContext, paramAttributeSet, 0);
+	}
+
+	public String getCenterText() {
+		return centerText;
+	}
+
+	public void setCenterText(String centerText) {
+		this.centerText = centerText;
 	}
 
 	public SeatView(Context paramContext, AttributeSet paramAttributeSet,
@@ -332,6 +340,7 @@ public class SeatView extends View {
 		localPaint2.setTextAlign(Paint.Align.CENTER);
 		localPaint2.setAntiAlias(true);
 		localPaint2.setColor(-16777216);
+
 		for (CH_seatInfo localSeat : this.list_CH_seatInfo) {// 2344
 			Log.d("localSeat", localSeat.toString());
 			// goto5 - 2344
@@ -377,14 +386,18 @@ public class SeatView extends View {
 											* this.ss_seat_current_height),
 							localPaint2);
 			localPaint2.setColor(-1);
-			paramCanvas.drawText(list_CH_seatInfo.get(i2+1).getPosition() + "",
-					(int) Math.abs(this.X_ThumViewYellow)
-							+ this.ss_seat_current_width / 2 / 2,
-					this.top_padding + i2 * this.ss_seat_current_height
-							+ this.ss_seat_current_height / 2
-							+ this.bom_padding / 2, localPaint2);
+			paramCanvas.drawText(list_CH_seatInfo.get(i2 + 1).getPosition()
+					+ "", (int) Math.abs(this.X_ThumViewYellow)
+					+ this.ss_seat_current_width / 2 / 2, this.top_padding + i2
+					* this.ss_seat_current_height + this.ss_seat_current_height
+					/ 2 + this.bom_padding / 2, localPaint2);
 		}
-
+		localPaint2.setColor(-1308622848);
+		int cloumn = Totalcolumn % 2 == 0 ? 0 : this.ss_seat_current_width / 2;
+		paramCanvas
+				.drawText(centerText, this.left_padding + Totalcolumn / 2
+						* this.ss_seat_current_width + this.L + cloumn, 50,
+						localPaint2);
 		if (this.isShowThumbnail) {
 			// 画缩略图的黄色框
 			localPaint2.setColor(-739328);
