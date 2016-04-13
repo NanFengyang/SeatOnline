@@ -1046,12 +1046,21 @@ public class SeatView extends View {
 			setSaly(event);
 		}
 		if (event.getAction() == MotionEvent.ACTION_UP) {
-			myHandler.sendEmptyMessageDelayed(DETALY, 1000);
+			myHandler.sendEmptyMessageDelayed(DETALY, DETALYTIME);
 		}
 
 		return true;
 	}
 
+	public int getDetalyTime() {
+		return DETALYTIME;
+	}
+
+	public void setDetalyTime(int DetalyTime) {
+		DETALYTIME = DetalyTime;
+	}
+
+	private int DETALYTIME = 1000;
 	private final static int DETALY = 1;
 	private Handler myHandler = new Handler() {
 
@@ -1059,7 +1068,7 @@ public class SeatView extends View {
 		public void handleMessage(Message msg) {
 			// TODO Auto-generated method stub
 			super.handleMessage(msg);
-			switch (msg.what) {
+			switch (msg.what) {// 缩略图延迟消失
 			case DETALY:
 				isShowThumbnail = false;
 				invalidate();
