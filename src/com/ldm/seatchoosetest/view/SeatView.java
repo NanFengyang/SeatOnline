@@ -10,6 +10,8 @@ import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.os.Message;
 import android.util.AttributeSet;
 import android.util.FloatMath;
 import android.util.Log;
@@ -325,7 +327,8 @@ public class SeatView extends View {
 				if (first_load_bg) {
 					first_load_bg = false;
 					tempX = 5 + (int) (this.SeatView_Width * this.T);
-					tempY = 5 + (int) (this.SeatView_height * this.T);
+					tempY = 5 + (int) (this.SeatView_height * this.T)
+							+ this.top_padding;
 				}
 				this.mCanvas.drawRect(5.0F, 5.0F, tempX, tempY, localPaint2);
 			}
@@ -1043,11 +1046,30 @@ public class SeatView extends View {
 			setSaly(event);
 		}
 		if (event.getAction() == MotionEvent.ACTION_UP) {
-			this.isShowThumbnail = false;
-			invalidate();
+			myHandler.sendEmptyMessageDelayed(DETALY, 1000);
 		}
 
 		return true;
 	}
+
+	private final static int DETALY = 1;
+	private Handler myHandler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg);
+			switch (msg.what) {
+			case DETALY:
+				isShowThumbnail = false;
+				invalidate();
+				break;
+
+			default:
+				break;
+			}
+		}
+
+	};
 
 }

@@ -35,7 +35,6 @@ public class MainActivity extends Activity {
 		SeatiInforData();
 		mSSView.init(list_CH_seatInfo, mSSThumView, 10);
 		mSSView.setOnSeatClickListener(new OnNewSeatClickListener() {
-
 			@Override
 			public boolean unClick(CH_seatInfo seatInfo) {
 				// TODO Auto-generated method stub
@@ -45,7 +44,6 @@ public class MainActivity extends Activity {
 						Toast.LENGTH_SHORT).show();
 				return false;
 			}
-
 			@Override
 			public boolean onClick(CH_seatInfo seatInfo) {
 				// TODO Auto-generated method stub
@@ -71,7 +69,6 @@ public class MainActivity extends Activity {
 				index += 1;
 			}
 		}
-
 	}
 
 	@Override

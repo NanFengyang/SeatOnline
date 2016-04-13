@@ -62,7 +62,7 @@ class SeatGestureListener extends GestureDetector.SimpleOnGestureListener {
 			int k = Math.round(x_scroll_distance);
 			Log.i("TAG_rect", k + "=k");
 			// 修改排数x轴的偏移�?
-			SeatView.c(mSatView, (float) k);
+			// SeatView.c(mSatView, (float) k);
 			// Log.i("TAG", SatView.v(mSatView)+"");
 			// 修改座位距离排数的横向距�?
 			SeatView.k(mSatView, k);
