@@ -79,11 +79,11 @@ public class SeatView extends View {
 	/** 左边�? */
 	private int left_padding = 0;
 	/** 右边�? */
-	private int right_padding = 0;
+	private int right_padding = 50;
 	/** 上边�? */
 	private int top_padding = 50;
 	/** 下边�? */
-	private int bom_padding = 0;
+	private int bom_padding = 15;
 	/** 排数x轴偏移量 */
 	private float X_ThumViewYellow = 0.0F;
 	/** 排数y轴偏移量 */
@@ -147,7 +147,7 @@ public class SeatView extends View {
 		this.mSSThumView = paramSSThumView;
 		this.list_CH_seatInfo = list_CH_seatInfo;
 		Totalrows = this.list_CH_seatInfo.get(this.list_CH_seatInfo.size() - 1)
-				.getRaw() + 1;
+				.getRaw() + 2;
 		Totalcolumn = this.list_CH_seatInfo.get(
 				this.list_CH_seatInfo.size() - 1).getColumn() + 1;
 		this.mBitMapSeatNormal = getBitmapFromDrawable((BitmapDrawable) this.mContext
@@ -377,7 +377,7 @@ public class SeatView extends View {
 		// cond_d - 2538
 		// 画排�?
 		localPaint2.setTextSize(0.4F * this.ss_seat_current_height);
-		for (int i2 = 0; i2 < Totalrows; i2++) {
+		for (int i2 = 0; i2 < Totalrows-1; i2++) {
 			localPaint2.setColor(-1308622848);
 			paramCanvas
 					.drawRect(
