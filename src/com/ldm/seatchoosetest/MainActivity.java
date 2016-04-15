@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ldm.seatchoosetest.model.CH_seatInfo;
@@ -21,6 +22,7 @@ public class MainActivity extends Activity {
 	private SeatView mSSView;
 	private SSThumView mSSThumView;
 	private List<CH_seatInfo> list_CH_seatInfo = new ArrayList<CH_seatInfo>();
+	private TextView chooseSeat;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class MainActivity extends Activity {
 	private void init() {
 		mSSView = (SeatView) this.findViewById(R.id.mSSView);
 		mSSThumView = (SSThumView) this.findViewById(R.id.ss_ssthumview);
+		chooseSeat = (TextView) this.findViewById(R.id.textView1);
 		SeatiInforData();
 		mSSView.init(list_CH_seatInfo, mSSThumView, 10);
 		mSSView.setOnSeatClickListener(new OnNewSeatClickListener() {
@@ -40,17 +43,16 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				int raw = seatInfo.getRaw() + 1;
 				int Column = seatInfo.getColumn() + 1;
-				Toast.makeText(MainActivity.this, "取消" + raw + "排-" + Column,
-						Toast.LENGTH_SHORT).show();
+				chooseSeat.setText("取消:" + raw + "排——" + Column + "座");
 				return false;
 			}
+
 			@Override
 			public boolean onClick(CH_seatInfo seatInfo) {
 				// TODO Auto-generated method stub
 				int raw = seatInfo.getRaw() + 1;
 				int Column = seatInfo.getColumn() + 1;
-				Toast.makeText(MainActivity.this, "选中" + raw + "排-" + Column,
-						Toast.LENGTH_SHORT).show();
+				chooseSeat.setText("选中:" + raw + "排——" + Column + "座");
 				return false;
 			}
 		});

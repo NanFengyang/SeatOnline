@@ -55,8 +55,8 @@ public class SeatView extends View {
 	private boolean v = false;
 
 	/** 座位�?小高�? */
-	private int ss_seat_min_height = 0;
 	/** 座位�?大高�? */
+	private int ss_seat_min_height = 0;
 	private int ss_seat_max_height = 0;
 	/** 座位�?小宽�? */
 	private int ss_seat_min_width = 0;
@@ -296,6 +296,7 @@ public class SeatView extends View {
 			this.p = 0;
 			this.seatView_topPadding = 0;
 		}
+
 		Paint localPaint2 = new Paint();
 		if (this.ss_seat_current_width != 0 && this.ss_seat_current_height != 0) {
 
@@ -460,7 +461,19 @@ public class SeatView extends View {
 					this.L = (int) Math.round(this.u * this.L);
 					if (this.L <= 0)
 						this.L = 1;
+					Log.d("setSaly", "X_ThumViewYellow:" + X_ThumViewYellow
+							+ "--ss_seat_current_width:"
+							+ ss_seat_current_width);
+					if (this.u < 1.0f
+							&& ((X_ThumViewYellow + ss_seat_current_width < ss_seat_current_width) | (Y_ThumViewYellow
+									+ ss_seat_current_height < ss_seat_current_height))) {
+						this.X_ThumViewYellow = 0.0f;
+						this.Y_ThumViewYellow = 0.0f;
+						this.p = 0;
+						this.seatView_topPadding = 0;
+					}
 				}
+
 				invalidate();
 			} catch (Exception localException) {
 				localException.printStackTrace();
@@ -1010,8 +1023,6 @@ public class SeatView extends View {
 			} else {
 				this.w = true;
 			}
-
-			// Toast.makeText(mContext, "单点触控", Toast.LENGTH_SHORT).show();
 			while (this.ss_seat_current_width < this.ss_seat_min_width
 					|| this.ss_seat_current_height < this.ss_seat_min_height) {
 				this.ss_seat_current_width++;

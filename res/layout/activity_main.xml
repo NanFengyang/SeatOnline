@@ -18,6 +18,15 @@
             android:layout_marginBottom="5.0dip"
             android:layout_marginLeft="5.0dip"
             android:layout_marginTop="5.0dip" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/ss_ssthumview"
+            android:text="" />
+
     </RelativeLayout>
 
     <com.ldm.seatchoosetest.view.SeatView

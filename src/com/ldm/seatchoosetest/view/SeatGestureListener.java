@@ -47,7 +47,6 @@ class SeatGestureListener extends GestureDetector.SimpleOnGestureListener {
 				&& (0.0F == SeatView.seatView_X(mSatView))) {
 			bool1 = false;
 		}
-
 		if ((SeatView.seatViewHeight(mSatView) < mSatView.getMeasuredHeight())
 				&& (0.0F == SeatView.seatView_Y(mSatView))) {
 			bool2 = false;
@@ -82,6 +81,7 @@ class SeatGestureListener extends GestureDetector.SimpleOnGestureListener {
 				SeatView.a(mSatView,
 						(float) (mSatView.getMeasuredWidth() - SeatView
 								.seatViewWidth(mSatView)));
+
 			}
 		}
 
