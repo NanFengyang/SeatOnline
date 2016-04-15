@@ -461,9 +461,6 @@ public class SeatView extends View {
 					this.L = (int) Math.round(this.u * this.L);
 					if (this.L <= 0)
 						this.L = 1;
-					Log.d("setSaly", "X_ThumViewYellow:" + X_ThumViewYellow
-							+ "--ss_seat_current_width:"
-							+ ss_seat_current_width);
 					if (this.u < 1.0f
 							&& ((X_ThumViewYellow + ss_seat_current_width < ss_seat_current_width) | (Y_ThumViewYellow
 									+ ss_seat_current_height < ss_seat_current_height))) {

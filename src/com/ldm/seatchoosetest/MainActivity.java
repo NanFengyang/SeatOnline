@@ -17,8 +17,8 @@ import com.ldm.seatchoosetest.view.SeatView;
 
 @SuppressLint("ShowToast")
 public class MainActivity extends Activity {
-	private static final int ROW = 6;
-	private static final int column = 6;
+	private static final int ROW = 16;
+	private static final int column = 16;
 	private SeatView mSSView;
 	private SSThumView mSSThumView;
 	private List<CH_seatInfo> list_CH_seatInfo = new ArrayList<CH_seatInfo>();
